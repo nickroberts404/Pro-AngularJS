@@ -1,13 +1,14 @@
-<html>
-    <head ng-app="outdoorCenter">
+<html ng-app="outdoorCenter">
+    <head>
         <title>OutdoorCenter</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <script src="ngmodules/angular.min.js"></script>
         <script>
         	angular.module("outdoorCenter", []);
         </script>
+        <script src="controllers/outdoorCenter.js"></script>
     </head>   
-    <body>
+    <body ng-controller = "outdoorCenterCtrl">
     	<div class="navbar navbar-inverse">
     		<a class="navbar-brand" href="#">Outdoor Center</a>
     	</div>
@@ -16,7 +17,15 @@
     			Categories go here
     		</div>
     		<div class="col-xs-8">
-    			Products go here
+    			<div class="well" ng-repeat="item in data.products">
+    				<h3>
+    					<strong>{{item.name}}</strong>
+    					<span class="pull-right label label-primary">
+    						{{item.price | currency}}
+    					</span>
+    				</h3>
+    				<span class="lead">{{item.description}}</span>
+    			</div>
     		</div>
     	</div>
     </body>
